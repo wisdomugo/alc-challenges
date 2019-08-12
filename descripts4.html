@@ -1,0 +1,38 @@
+https://media.giphy.com/media/xUA7bd4fc8NDP3Sh5C/giphy.gif
+
+You will be implementing the The Luhn Algorithm to validate credit card numbers (see https://en.wikipedia.org/wiki/Luhn_algorithm for more details), but follow the instructions below for simplicity.
+
+Given a series of up to 16 digits, from the right to left, double every other digit starting with the second to last digit:
+
+1714
+=> [1*, 7, 1*, 4]
+=> [2, 7, 2, 4]
+If a resulting doubled number is greater than 9, replace it with either the sum of its own digits, or 9 subtracted from it.
+
+[8, 18*, 1]
+=> [8, (1+8), 1]
+OR
+=> [8, (18-9), 1]
+Resulting in:
+=> [8, 9, 1]
+Sum all of the final digits:
+
+[8, 9, 1]
+=> 8+9+1
+=> 18
+Finally, take that sum and divide it by 10. If there is no remainder, the original credit card number is valid, else it is not valid.
+
+Time for you algorithm implementation. Recall that the validateCardNumber function is called when the user clicks on the Pay & Checkout Now button
+
+Step 1
+Create a validateWithLuhn function above the validateCardNumber function. It should take a digits parameter which will represent the credit card numbers as an array of 16 integers. It should return true or false depending on if the digits are valid or not, including if it got more or less than 16 digits or a mixture of digits and invalid characters.
+Step 2
+Implement validateCardNumber to validate the card numbers entered by the user. It delegates to the validateWithLuhn function for the actual validation and returns the true or false value it gets from validateWithLuhn. Before returning the outcome of the validation, it should also indicate that the entries are invalid or valid by adding or removing the is-invalid class to the data-cc-digits DIV respectively, depending on the validity of the card number.
+Step 3
+You don't want the user paying the wrong bill because you've calculated it wrongly or presented it in the wrong currency
+
+Make sure what is set to appState.bill is correctly calculated by summing the prices of the items the user bought. Don't forget that each item has a quantity, which affects the price!
+
+Make sure that appState.billFormattedhas the currency of the user's country and only uses the dollar currency if the user's country is not available within the provided list of countries.
+
+Try filling in some payment details into the PayCard app, then click the Pay & Checkout Now BUTTON to see if the entered card numbers are correctly marked as invalid or not.
